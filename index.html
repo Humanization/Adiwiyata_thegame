@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoFarm Tycoon</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="game-container">
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Sidebar Kiri -->
+    <div class="sidebar" id="sidebar-left">
+        <div class="top-stats">
+            <div class="stat-box"><span>💰 Uang:</span> <span id="money">100</span></div>
+            <div class="stat-box"><span>⚡ Energi:</span> <span id="stamina">100</span></div>
+            <div class="stat-box"><span>📅 Hari:</span> <span id="day">1</span></div>
+        </div>
+        
+        <h3 class="text-[10px] font-bold text-gray-500 uppercase">Tugas Kebun</h3>
+        <button class="btn btn-green tool-btn" onclick="setTool('plant')">🌱 Tanam (10💰)</button>
+        <button class="btn btn-blue tool-btn" onclick="setTool('water')">💧 Siram</button>
+        <button class="btn btn-red tool-btn" onclick="setTool('pesticide')">🧪 Pestisida</button>
+
+        <div id="message-log">
+            <div id="log-content">Selamat berkebun!</div>
+        </div>
+    </div>
+
+    <canvas id="farmCanvas"></canvas>
+
+    <!-- Sidebar Kanan -->
+    <div class="sidebar" id="sidebar-right">
+        <div class="top-stats">
+            <div class="stat-box text-center"><span>🎒 Tas:</span> <span id="inventory-count">0</span></div>
+        </div>
+
+        <h3 class="text-[10px] font-bold text-gray-500 uppercase">Pengelolaan</h3>
+        <button class="btn btn-blue tool-btn" onclick="setTool('cleanup')">🧹 Bersih/Panen</button>
+        <button class="btn btn-orange tool-btn" onclick="setTool('eat')">😋 Makan</button>
+        
+        <div class="my-1 border-t border-gray-300"></div>
+        
+        <h3 class="text-[10px] font-bold text-gray-500 uppercase">Ekonomi</h3>
+        <button class="btn btn-green" onclick="sellAll()">💰 Jual Semua</button>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quiz-modal" class="modal">
+        <h2 class="text-xl font-bold mb-2 text-center">Pilah Sampah!</h2>
+        <p id="quiz-item-icon" class="text-5xl mb-3 text-center"></p>
+        <div class="flex flex-col gap-2">
+            <button class="btn btn-green justify-center" onclick="checkQuiz('Organik')">Organik</button>
+            <button class="btn btn-blue justify-center" onclick="checkQuiz('Non-Organik')">Non-Organik</button>
+            <button class="btn btn-red justify-center" onclick="checkQuiz('B3')">B3</button>
+        </div>
+    </div>
+
+    <!-- Tutorial Modal -->
+    <div id="tutorial-modal" class="modal" style="display: block;">
+        <h2 class="text-2xl font-bold mb-4 text-center">Panduan 🚜</h2>
+        <p class="mb-2 text-sm"><b>Kiri:</b> Alat Tanam & Rawat.</p>
+        <p class="mb-4 text-sm"><b>Kanan:</b> Panen, Makan, & Jual.</p>
+        <button class="btn btn-blue w-full justify-center" onclick="closeTutorial()">Mulai!</button>
+    </div>
+</div>
+
+<!-- External JS -->
+<script src="script.js"></script>
+</body>
+</html>
